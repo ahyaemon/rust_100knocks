@@ -7,11 +7,7 @@ use rand::prelude::*;
 /// 2つの正の整数値を入力させ、互いに素であるか判定するプログラムを作成せよ。
 /// なお、2つの正の整数が互いに素とは、1以外に共通公約数を持たない関係のことである。
 pub fn knock_80(s: &str) -> bool {
-    let sp: Vec<String> = parse_sep(s, ' ');
-    let a = knock_53(&sp[0]);
-    let b = knock_53(&sp[1]);
-
-    !a.iter().any(|u| b.contains(u))
+    todo!()
 }
 
 #[cfg(test)]
@@ -37,9 +33,7 @@ mod tests_80 {
 ///
 /// ３つの整数値を入力させ、3つの値のうち2番目に大きい値を表示するプログラムを作成せよ。
 pub fn knock_81(s: &str) -> isize {
-    let mut sp: Vec<isize> = parse_sep(s, ' ');
-    sp.sort();
-    sp[1]
+    todo!()
 }
 
 #[cfg(test)]
@@ -68,33 +62,7 @@ mod tests_81 {
 /// このパスカルの三角形を15段まで計算して表示するプログラムを作成せよ。
 /// ただし表示は左詰で値はスペースで区切って表示するのでよい（三角形に並べなくてもよい）。
 pub fn knock_82() -> String {
-    let mut v: Vec<Vec<isize>> = vec![];
-
-    for i in 0..15 {
-        if i == 0 {
-            v.push(vec![1]);
-            continue;
-        }
-
-        let vv = (0..=i)
-            .map(|j| match j {
-                0 => 1,
-                n if n == i => 1,
-                _ => v[i - 1][j - 1] + v[i - 1][j],
-            })
-            .collect::<Vec<isize>>();
-        v.push(vv);
-    }
-
-    v.iter()
-        .map(|vv| {
-            vv.iter()
-                .map(|vvv| format!("{}", vvv))
-                .collect::<Vec<String>>()
-                .join(" ")
-        })
-        .collect::<Vec<String>>()
-        .join("\n")
+    todo!()
 }
 
 #[cfg(test)]
@@ -125,38 +93,7 @@ mod tests_82 {
 /// - 乱数を使うとテストが難しくなるため、コンピュータはグーチョキパー(0 -> 1 -> 2)を順々に出すこととする。
 /// - 戻り値は (勝ち数, 負け数) とする。
 pub fn knock_83(s: &str) -> (usize, usize) {
-    let sp: Vec<usize> = parse_sep(s, ' ');
-    let mut win = 0;
-    let mut lose = 0;
-    let mut i = 0;
-
-    loop {
-        let com = i % 3;
-        let me = sp[i];
-
-        if me >= 3 {
-            lose += 1;
-            i += 1;
-            continue;
-        }
-
-        let diff = 3 + me - com;
-
-        match diff % 3 {
-            0 => {
-                i += 1;
-                continue;
-            }
-            1 => lose += 1,
-            _ => win += 1,
-        }
-
-        if win + lose == 5 {
-            break;
-        }
-        i += 1;
-    }
-    (win, lose)
+    todo!()
 }
 
 #[cfg(test)]
@@ -179,10 +116,7 @@ mod tests_83 {
 /// 適当に順序を入れ替えるには、例えば2つの入れ替えるカードを乱数を使って選び、
 /// それらを入れ替える操作を何回も繰り返せばよい。
 pub fn knock_84() -> Vec<usize> {
-    let mut rng = thread_rng();
-    let mut nums: Vec<usize> = (1..=52).collect();
-    nums.shuffle(&mut rng);
-    nums
+    todo!()
 }
 
 #[cfg(test)]
@@ -216,27 +150,7 @@ mod tests_84 {
 /// **以下改変**
 /// - プレイヤー1 が勝ったら true, 負けたら false を返すようにする
 pub fn knock_85(s: &str) -> bool {
-    let lines: Vec<usize> = parse_sep(s, '\n');
-    let mut rest = lines[0] as isize;
-    let mut is_player1 = true;
-    for amount in lines.iter().skip(1) {
-        if *amount >= 4 {
-            continue;
-        }
-
-        rest -= *amount as isize;
-
-        if rest == 1 {
-            break;
-        }
-
-        is_player1 = !is_player1;
-
-        if rest < 1 {
-            break;
-        }
-    }
-    is_player1
+    todo!()
 }
 
 #[cfg(test)]
@@ -271,32 +185,7 @@ mod tests_85 {
 /// **以下改変**
 /// - 石の初期数とプレイヤー 1 の入力を引数として受け取り、コンピュータの入力を戻り値として返す
 pub fn knock_86(s: &str) -> Vec<usize> {
-    let sp: Vec<usize> = parse_sep(s, ' ');
-    let mut rest = sp[0];
-    let mut result = vec![];
-
-    if rest % 4 != 1 {
-        let com_input = (rest - 1) % 4;
-        result.push(com_input);
-        rest -= com_input;
-    }
-
-    for player_input in &sp[1..] {
-        if *player_input == 0 {
-            continue;
-        }
-
-        if *player_input > 3 {
-            continue;
-        }
-
-        rest -= *player_input;
-        let com_input = 4 - *player_input;
-
-        result.push(com_input)
-    }
-
-    result
+    todo!()
 }
 
 /// FIXME 仮にコンピューターが勝利していなくてもテストを通せてしまう。微妙なテスト。
@@ -328,28 +217,7 @@ mod tests_86 {
 /// 例：2015年12月23日→2+0+1+5+1+2+2+3=16→1+6=7
 /// 運命数を計算するプログラムを作成せよ。
 pub fn knock_87(s: &str) -> usize {
-    let mut n = sum_digits(s);
-
-    loop {
-        if n < 10 {
-            break;
-        }
-
-        let ss: Vec<String> = n.to_string().chars().map(|c| c.to_string()).collect();
-        if ss.iter().all(|s| *s == ss[0]) {
-            break;
-        }
-
-        n = sum_digits(&n.to_string())
-    }
-
-    n
-}
-
-fn sum_digits(s: &str) -> usize {
-    s.chars()
-        .map(|c| c.to_string().parse::<usize>().unwrap())
-        .sum()
+    todo!()
 }
 
 #[cfg(test)]
@@ -382,20 +250,7 @@ mod tests_87 {
 /// - 正解値は 14 に固定する
 /// - プレイヤーの入力を引数とし、`Vec<Knock88Result>` を戻り値とする
 pub fn knock_88(s: &str) -> Vec<Knock88Result> {
-    let player_inputs: Vec<usize> = parse_sep(s, ' ');
-    const ANSWER: usize = 14;
-
-    let mut result = Vec::default();
-
-    for (i, player_input) in player_inputs.iter().enumerate() {
-        let r = match *player_input {
-            n if n < ANSWER => Knock88Result::Bigger,
-            ANSWER => Knock88Result::Collect(i + 1),
-            _ => Knock88Result::Smaller,
-        };
-        result.push(r)
-    }
-    result
+    todo!()
 }
 
 #[derive(Debug, PartialEq)]
@@ -439,29 +294,7 @@ mod tests_88 {
 /// **以下改変**
 /// - コンピュータの推測回数を戻り値とする
 pub fn knock_89(s: &str) -> usize {
-    let answer: usize = s.parse().unwrap();
-
-    let mut i = 0;
-    let mut min = 1;
-    let mut max = 99;
-
-    loop {
-        let guess = (min + max) / 2;
-
-        match guess {
-            n if n < answer => min = guess + 1,
-            n if n == answer => break,
-            _ => max = guess - 1,
-        }
-
-        i += 1;
-
-        if guess == answer {
-            break;
-        }
-    }
-
-    i
+    todo!()
 }
 
 #[cfg(test)]

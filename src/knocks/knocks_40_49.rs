@@ -4,12 +4,7 @@ use crate::parse::parse_sep;
 ///
 /// 整数値を入力させ、その値が偶数ならばeven、奇数ならばoddと表示するプログラムを作成せよ。
 pub fn knock_40(s: &str) -> String {
-    let i: isize = s.parse().unwrap();
-
-    match i % 2 {
-        0 => String::from("even"),
-        _ => String::from("odd"),
-    }
+    todo!()
 }
 
 #[cfg(test)]
@@ -35,7 +30,7 @@ mod tests_40 {
 ///
 /// 整数値を入力させ、その値が一桁の自然数かそうでないか判定するプログラムを作成せよ。
 pub fn knock_41(s: &str) -> bool {
-    s.parse::<isize>().unwrap() < 10
+    todo!()
 }
 
 #[cfg(test)]
@@ -62,12 +57,7 @@ mod tests_41 {
 /// 整数値を3つ入力させ、それらの値が小さい順（等しくてもよい）に並んでいるか判定し、
 /// 小さい順に並んでいる場合はOK、そうなっていない場合はNGと表示するプログラムを作成せよ。
 pub fn knock_42(s: &str) -> bool {
-    let sp: Vec<isize> = parse_sep(s, ' ');
-    let a = sp[0];
-    let b = sp[1];
-    let c = sp[2];
-
-    (a <= b) && (b <= c)
+    todo!()
 }
 
 #[cfg(test)]
@@ -94,18 +84,7 @@ mod tests_42 {
 /// 2次方程式 ax^2 + bx + c = 0 （x^2はxの2乗の意味）の係数a, b, cを入力し、
 /// 2次方程式の解が2つの実数解か、重解か、2つの虚数解かを判別するプログラムを作成せよ。
 pub fn knock_43(s: &str) -> Solution {
-    let sp: Vec<isize> = parse_sep(s, ' ');
-    let a = sp[0];
-    let b = sp[1];
-    let c = sp[2];
-
-    let d = b * b - 4 * a * c;
-
-    match d {
-        n if n > 0 => Solution::Real,
-        0 => Solution::Multiple,
-        _ => Solution::Imaginary,
-    }
+    todo!()
 }
 
 #[derive(Debug, PartialEq)]
@@ -147,15 +126,7 @@ mod tests_43 {
 /// 入力した金額が何ドル何セントか計算して表示するプログラムを作成せよ。
 /// 1セントは1/100ドルである。結果は整数値でよい（1セント未満の端数切り捨て）。
 pub fn knock_44(s: &str) -> (usize, usize) {
-    let sp: Vec<usize> = parse_sep(s, ' ');
-    let yen = sp[0];
-    let yen_per_dollars = sp[1];
-
-    let dollars = yen / yen_per_dollars;
-    let rest_yen = yen - (dollars * yen_per_dollars);
-    let cents = (rest_yen * 100) / yen_per_dollars;
-
-    (dollars, cents)
+    todo!()
 }
 
 #[cfg(test)]
@@ -182,17 +153,7 @@ mod tests_44 {
 /// 初乗り料金が1700mまで610円、それ以降は313mごとに80円のタクシーがある。
 /// このタクシーに乗った距離をm単位で入力し、料金を計算するプログラムを作成せよ。
 pub fn knock_45(s: &str) -> usize {
-    const M_FIRST: usize = 1700;
-    const M_AFTER: usize = 313;
-    const FEE_FIRST: usize = 610;
-    const FEE_AFTER: usize = 80;
-
-    let m: usize = s.parse().unwrap();
-
-    match m {
-        ..=M_FIRST => FEE_FIRST,
-        _ => FEE_FIRST + ((m - M_FIRST - 1) / M_AFTER + 1) * FEE_AFTER,
-    }
+    todo!()
 }
 
 #[cfg(test)]
@@ -225,18 +186,7 @@ mod tests_45 {
 /// 神山美術館の入場料金は、一人600円であるが、5人以上のグループなら一人550円、20人以上の団体なら一人500円である。
 /// 人数を入力し、入場料の合計を計算するプログラムを作成せよ。
 pub fn knock_46(s: &str) -> usize {
-    const FEE: usize = 600;
-    const FEE_GE_5: usize = 550;
-    const FEE_GE_20: usize = 500;
-
-    let amount: usize = s.parse().unwrap();
-    let fee = match amount {
-        ..=4 => FEE,
-        5..=19 => FEE_GE_5,
-        _ => FEE_GE_20,
-    };
-
-    amount * fee
+    todo!()
 }
 
 #[cfg(test)]
@@ -282,23 +232,7 @@ pub fn knock_47() {
 /// 計算結果が1になるまで繰り返すプログラムを作成せよ。
 /// 規則：ある値が偶数ならその値を1/2にする。奇数ならその値を3倍して1を足す。
 pub fn knock_48(s: &str) -> Vec<usize> {
-    let mut u: usize = s.parse().unwrap();
-    let mut v = vec![];
-
-    loop {
-        if u == 1 {
-            break;
-        }
-
-        u = match u % 2 {
-            0 => u / 2,
-            _ => u * 3 + 1,
-        };
-
-        v.push(u);
-    }
-
-    v
+    todo!()
 }
 
 #[cfg(test)]
@@ -319,16 +253,7 @@ mod tests_48 {
 /// 2重の繰り返しを使わず単に表示するだけではダメ。
 /// 値の間はタブ(\t)を使って間をあけること。
 pub fn knock_49() -> String {
-    (1..=9)
-        .map(|a| {
-            (1..=9)
-                .map(|b| a * b)
-                .map(|u| u.to_string())
-                .collect::<Vec<String>>()
-                .join("\t")
-        })
-        .collect::<Vec<String>>()
-        .join("\n")
+    todo!()
 }
 
 #[cfg(test)]

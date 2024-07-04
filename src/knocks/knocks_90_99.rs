@@ -16,11 +16,7 @@ use rand::prelude::*;
 /// **以下改変**
 /// - 戻り値: (1 枚目のカードの数字, 2 枚目のカードの数字, 合計値)
 pub fn knock_90() -> (usize, usize, usize) {
-    let cards = knock_84();
-    let a = cards[0] % 13 + 1;
-    let b = cards[1] % 13 + 1;
-
-    (a, b, a + b)
+    todo!()
 }
 
 #[cfg(test)]
@@ -55,21 +51,7 @@ mod tests_90 {
 /// **以下改変**
 /// - 戻り値: Vec<引いたカード>
 pub fn knock_91() -> Vec<usize> {
-    let cards = knock_84();
-    let a = cards[0] % 13 + 1;
-    let b = cards[1] % 13 + 1;
-    let mut result = vec![a, b];
-
-    for card in cards.iter().take(52).skip(2) {
-        if result.iter().sum::<usize>() >= 17 {
-            break;
-        }
-
-        let c = *card % 13 + 1;
-        result.push(c);
-    }
-
-    result
+    todo!()
 }
 
 #[cfg(test)]
@@ -92,14 +74,7 @@ mod tests_91 {
 ///
 /// 1から50まで順に表示していくが、3の倍数と3のつく数字のときは頭に"aho"と付けて表示するプログラムを作成せよ。
 pub fn knock_92() -> String {
-    (1..=50)
-        .map(|u| match u {
-            n if n % 3 == 0 => format!("aho {}", n),
-            n if n.to_string().contains('3') => format!("aho {}", n),
-            _ => u.to_string(),
-        })
-        .collect::<Vec<String>>()
-        .join("\n")
+    todo!()
 }
 
 #[cfg(test)]
@@ -121,17 +96,7 @@ mod tests_92 {
 /// 次に、開始値から終了値まで順に、3の倍数と3のつく数字のときは頭に"aho"と付けて表示するプログラムを作成せよ。
 /// 開始値と終了値の値の妥当性（例えば終了値の方が開始値よりも大きいか）チェックは省略してよい。
 pub fn knock_93(s: &str) -> String {
-    let sp: Vec<usize> = parse_sep(s, ' ');
-    let start = sp[0];
-    let end = sp[1];
-    (start..=end)
-        .map(|u| match u {
-            n if n % 3 == 0 => format!("aho {}", n),
-            n if n.to_string().contains('3') => format!("aho {}", n),
-            _ => u.to_string(),
-        })
-        .collect::<Vec<String>>()
-        .join("\n")
+    todo!()
 }
 
 #[cfg(test)]
@@ -171,18 +136,7 @@ mod tests_93 {
 /// - 引数は "{答え} {プレイヤーの入力}" とする
 /// - 戻り値はヒット数
 pub fn knock_94(s: &str) -> usize {
-    let sp: Vec<String> = parse_sep(s, ' ');
-    let answer = &sp[0];
-    let input = &sp[1];
-    let input_chars: Vec<char> = input.chars().collect();
-
-    let num = answer
-        .chars()
-        .enumerate()
-        .filter_map(|(i, c)| if c == input_chars[i] { Some(1) } else { None })
-        .sum();
-
-    num
+    todo!()
 }
 
 #[cfg(test)]
@@ -224,41 +178,7 @@ mod tests_94 {
 /// ※ 引数は "{答え} {プレイヤーの入力}" とする
 /// ※ 戻り値は (ヒット数, ブロー数)
 pub fn knock_95(s: &str) -> (usize, usize) {
-    let sp: Vec<String> = parse_sep(s, ' ');
-    let mut answer_chars: Vec<char> = sp[0].chars().collect();
-    let mut input_chars: Vec<char> = sp[1].chars().collect();
-
-    // ヒット数計算
-    let mut hit_num: usize = 0;
-
-    for i in (0..4).rev() {
-        let answer = answer_chars[i];
-        let input = input_chars[i];
-        if answer == input {
-            answer_chars.remove(i);
-            input_chars.remove(i);
-            hit_num += 1;
-        }
-    }
-
-    // ブロー数計算
-    let mut blow_num: usize = 0;
-
-    for i_input in (0..input_chars.len()).rev() {
-        let input = input_chars[i_input];
-
-        for i_answer in (0..answer_chars.len()).rev() {
-            let answer = answer_chars[i_answer];
-
-            if answer == input {
-                answer_chars.remove(i_answer);
-                blow_num += 1;
-                break;
-            }
-        }
-    }
-
-    (hit_num, blow_num)
+    todo!()
 }
 
 #[cfg(test)]
@@ -295,18 +215,7 @@ mod tests_95 {
 /// **以下改変**
 /// - 引数は正解値のスペースの後、スペース区切りのプレイヤーの入力
 pub fn knock_96(s: &str) -> Vec<Knock96Result> {
-    let sp: Vec<String> = parse_sep(s, ' ');
-    let answer = &sp[0];
-    sp.iter()
-        .skip(1)
-        .map(|ss| {
-            let input = &format!("{} {}", answer, ss);
-            match knock_95(input) {
-                (4, 0) => Knock96Result::Collect,
-                (hit, blow) => Knock96Result::Wrong { hit, blow },
-            }
-        })
-        .collect::<Vec<Knock96Result>>()
+    todo!()
 }
 
 #[derive(Debug, PartialEq)]
@@ -349,11 +258,7 @@ mod tests_96 {
 /// **以下改変**
 /// - 戻り値は String ではなく、`Vec<Row>` とする
 pub fn knock_97() -> Vec<Knock97Row> {
-    let mut numbers: Vec<usize> = (1..=75).collect();
-    let mut rng = thread_rng();
-    numbers.shuffle(&mut rng);
-
-    numbers[..25].chunks(5).map(|v| v.to_vec()).collect()
+    todo!()
 }
 
 /// 列に含まれれる数字の Vector
@@ -407,82 +312,7 @@ mod tests_97 {
 /// - 引数: ビンゴカードの後に、抽選する数字を改行区切りにした文字列
 /// - 戻り値: (ビンゴしたかどうかの boolean, ビンゴカード)
 pub fn knock_98(s: &str) -> (bool, Vec<Knock98Column>) {
-    let sp: Vec<String> = parse_sep(s, '\n');
-    let player_inputs: Vec<usize> = sp[5..]
-        .iter()
-        .map(|line| line.parse::<usize>().unwrap())
-        .collect();
-
-    // ビンゴカード作成
-    // プレイヤーの入力も加味する
-    let bingo_card: Vec<Knock98Column> = sp[0..5]
-        .iter()
-        .map(|line| {
-            parse_sep::<usize>(line, '\t')
-                .iter()
-                .map(|u| match player_inputs.contains(u) {
-                    true => None,
-                    false => Some(*u),
-                })
-                .collect::<Knock98Column>()
-        })
-        .collect();
-
-    // ビンゴ判定
-    let bingo_card_binary: Vec<Vec<u8>> = bingo_card
-        .iter()
-        .map(|row| {
-            row.iter()
-                .map(|o| match o {
-                    Some(_) => 0,
-                    None => 1,
-                })
-                .collect::<Vec<u8>>()
-        })
-        .collect();
-
-    // 横方向の判定
-    let row_summarizes: Vec<u8> = bingo_card_binary
-        .iter()
-        .map(|row| row.iter().sum())
-        .collect();
-    if row_summarizes.iter().any(|u| *u == 5) {
-        return (true, bingo_card);
-    }
-
-    // 縦方向の判定
-    let mut col_summarizes: Vec<u8> = vec![0, 0, 0, 0, 0];
-    for row in bingo_card_binary.iter().take(5) {
-        for i_col in 0..5 {
-            let u = row[i_col];
-            col_summarizes[i_col] += u;
-        }
-    }
-    if col_summarizes.iter().any(|u| *u == 5) {
-        return (true, bingo_card);
-    }
-
-    // 斜め方向(右下り)の判定
-    let mut dia_summarize_down = 0;
-    for (i, row) in bingo_card_binary.iter().enumerate() {
-        let u = row[i];
-        dia_summarize_down += u;
-    }
-    if dia_summarize_down == 5 {
-        return (true, bingo_card);
-    }
-
-    // 斜め方向(右上がり)の判定
-    let mut dia_summarize_up = 0;
-    for (i, row) in bingo_card_binary.iter().enumerate() {
-        let u = row[4 - i];
-        dia_summarize_up += u;
-    }
-    if dia_summarize_up == 5 {
-        return (true, bingo_card);
-    }
-
-    (false, bingo_card)
+    todo!()
 }
 
 /// ビンゴの列を表す
