@@ -390,19 +390,6 @@ mod tests_97 {
                 .len();
             assert_eq!(amount, 1);
         }
-
-        // TODO tmp
-        let a = actual
-            .iter()
-            .map(|row| {
-                row.iter()
-                    .map(|cell| cell.to_string())
-                    .collect::<Vec<String>>()
-                    .join("\t")
-            })
-            .collect::<Vec<String>>()
-            .join("\n");
-        println!("{}", a)
     }
 }
 
