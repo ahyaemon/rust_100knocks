@@ -256,14 +256,14 @@ mod tests_08 {
 
     #[test]
     fn it_works_negative() {
-        let actual = crate::knocks::knocks_00_09::knock_08("-1");
+        let actual = knock_08("-1");
         let expected = None;
         assert_eq!(actual, expected);
     }
 
     #[test]
     fn it_works_zero() {
-        let actual = crate::knocks::knocks_00_09::knock_08("0");
+        let actual = knock_08("0");
         let expected = None;
         assert_eq!(actual, expected);
     }
