@@ -248,15 +248,22 @@ mod tests_08 {
     use crate::knocks::knocks_00_09::knock_08;
 
     #[test]
-    fn it_works_some() {
-        let actual = knock_08("0");
+    fn it_works_positive() {
+        let actual = knock_08("1");
         let expected = Some(String::from("positive"));
         assert_eq!(actual, expected);
     }
 
     #[test]
-    fn it_works_none() {
-        let actual = crate::knocks::knocks_00_09::knock_08("1");
+    fn it_works_negative() {
+        let actual = crate::knocks::knocks_00_09::knock_08("-1");
+        let expected = None;
+        assert_eq!(actual, expected);
+    }
+
+    #[test]
+    fn it_works_zero() {
+        let actual = crate::knocks::knocks_00_09::knock_08("0");
         let expected = None;
         assert_eq!(actual, expected);
     }
