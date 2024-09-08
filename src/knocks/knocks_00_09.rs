@@ -238,7 +238,7 @@ mod tests_07 {
 ///   - それ以外の場合は `None`
 pub fn knock_08(a: &str) -> Option<String> {
     match a.parse::<i32>().unwrap() {
-        a if a <= 0 => Some(String::from("positive")),
+        a if a > 0 => Some(String::from("positive")),
         _ => None,
     }
 }
